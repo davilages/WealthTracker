@@ -1,4 +1,4 @@
-﻿namespace WealthTracker.Models
+﻿namespace WealthTracker.Enums
 {
     public enum AssetType
     {

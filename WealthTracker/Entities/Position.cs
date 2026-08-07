@@ -1,4 +1,4 @@
-﻿namespace WealthTracker.Models
+﻿namespace WealthTracker.Entities
 {
     public class Position
     {

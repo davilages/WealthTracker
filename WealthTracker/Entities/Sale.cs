@@ -1,6 +1,6 @@
-﻿namespace WealthTracker.Models
+﻿namespace WealthTracker.Entities
 {
-    public class Purchase
+    public class Sale
     {
         public int Id { get; set; }
         public int PositionId { get; set; }

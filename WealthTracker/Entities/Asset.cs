@@ -1,4 +1,6 @@
-﻿namespace WealthTracker.Models
+﻿using WealthTracker.Enums;
+
+namespace WealthTracker.Entities
 {
     public class Asset
     {

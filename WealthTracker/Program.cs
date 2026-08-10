@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IAssetRepository, AssetRepository>();
+builder.Services.AddHttpClient<IBrapiService, BrapiService>();
 builder.Services.AddScoped<IAssetService, AssetService>();
 
 var app = builder.Build();

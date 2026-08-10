@@ -34,6 +34,10 @@ namespace WealthTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Sector")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Ticker")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -55,6 +59,7 @@ namespace WealthTracker.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Date")
@@ -106,12 +111,15 @@ namespace WealthTracker.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(18, 8)
+                        .HasColumnType("decimal(18,8)");
 
                     b.Property<decimal>("Taxes")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -136,12 +144,15 @@ namespace WealthTracker.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(18, 8)
+                        .HasColumnType("decimal(18,8)");
 
                     b.Property<decimal>("Taxes")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

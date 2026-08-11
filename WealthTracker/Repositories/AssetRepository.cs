@@ -17,7 +17,6 @@ namespace WealthTracker.Repositories
         public async Task<IEnumerable<Asset>> GetAllAsync()
         {
             var assets = await _context.Assets.ToListAsync();
-
             return assets;
         }
 
@@ -25,7 +24,13 @@ namespace WealthTracker.Repositories
         public async Task<Asset?> GetByIdAsync(int id)
         {
             var asset = await _context.Assets.FindAsync(id);
+            return asset;
+        }
 
+        // Get asset by ticker
+        public async Task<Asset?> GetByTickerAsync(string ticker)
+        {
+            var asset = await _context.Assets.FirstOrDefaultAsync(a => a.Ticker == ticker);
             return asset;
         }
 

@@ -18,6 +18,7 @@ builder.Services.AddHttpClient<IBrapiService, BrapiService>();
 builder.Services.AddScoped<IAssetService, AssetService>();
 builder.Services.AddScoped<IPositionRepository, PositionRepository>();
 builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+builder.Services.AddScoped<IPositionService, PositionService>();
 
 var app = builder.Build();
 

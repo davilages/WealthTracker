@@ -7,5 +7,6 @@ namespace WealthTracker.Repositories
     {
         public Task<IEnumerable<Position>> GetAllAsync();
         public Task<Position?> GetByUserAndAssetAsync(Guid userId, int assetId);
+        public Task<Position> AddAsync(Position position);
     }
 }

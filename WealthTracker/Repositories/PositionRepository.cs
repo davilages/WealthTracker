@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using WealthTracker.Data;
 using WealthTracker.Entities;
 
@@ -22,6 +21,13 @@ namespace WealthTracker.Repositories
         public async Task<Position?> GetByUserAndAssetAsync(Guid userId, int assetId)
         {
             var position = await _context.Positions.FirstOrDefaultAsync(p => p.UserId == userId && p.AssetId == assetId );
+            return position;
+        }
+
+        public async Task<Position> AddAsync(Position position)
+        {
+            await _context.Positions.AddAsync(position);
+            await _context.SaveChangesAsync();
             return position;
         }
     }

@@ -22,6 +22,11 @@ namespace WealthTracker.Services
             var asset = await _repository.GetByIdAsync(id);
             return asset;
         }
+        public async Task<Asset?> GetByTickerAsync(string ticker)
+        {
+            var asset = await _repository.GetByTickerAsync(ticker);
+            return asset;
+        }
         public async Task<Asset> AddAsync(Asset asset)
         {
             return await _repository.AddAsync(asset);

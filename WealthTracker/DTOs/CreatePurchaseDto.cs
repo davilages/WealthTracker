@@ -9,6 +9,7 @@ namespace WealthTracker.DTOs
         public decimal Quantity { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal Taxes { get; set; }
-        public AssetType Type { get; set; }
+        public string? Sector { get; set; } // Used only when the asset is new
+        public AssetType? Type { get; set; } // Optional property for asset type, can be null if not provided - only necessary when it's a new asset being created
     }
 }

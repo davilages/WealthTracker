@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WealthTracker.DTOs;
-using WealthTracker.Entities;
 using WealthTracker.Services;
 
 namespace WealthTracker.Controllers
@@ -9,18 +8,18 @@ namespace WealthTracker.Controllers
     [Route("api/[controller]")]
     public class AssetsController : ControllerBase
     {
-        private readonly IAssetService _service;
+        private readonly IAssetService _assetService;
 
-        public AssetsController(IAssetService service)
+        public AssetsController(IAssetService assetService)
         {
-            _service = service;
+            _assetService = assetService;
         }
 
         // endpoints aqui
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AssetResponseDto>>> GetAllAsync()
         {
-            var assets = await _service.GetAllAsync();
+            var assets = await _assetService.GetAllAsync();
             var dtos = assets.Select(a => new AssetResponseDto
             {
                 Id = a.Id,
@@ -36,7 +35,7 @@ namespace WealthTracker.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<AssetResponseDto>> GetByIdAsync(int id)
         {
-            var asset = await _service.GetByIdAsync(id);
+            var asset = await _assetService.GetByIdAsync(id);
 
             if (asset == null)
             {

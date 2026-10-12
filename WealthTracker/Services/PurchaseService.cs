@@ -23,16 +23,23 @@ namespace WealthTracker.Services
             var asset = await _assetService.GetByTickerAsync(ticker);
             if (asset == null)
             {
+                if (dto.Type == null)
+                {
+                    throw new ArgumentException($"Asset type must be provided for new assets.");
+                }
+
                 var quote = await _brapiService.GetQuoteAsync(ticker);
                 if (quote == null)
                 {
                     throw new ArgumentException($"Asset with ticker {ticker} not found.");
                 }
+
                 asset = new Asset
                 {
                     Ticker = ticker,
                     Name = quote.LongName,
-                    Type = dto.Type
+                    Type = dto.Type.Value,
+                    Sector = dto.Sector?.Trim() ?? string.Empty,
                 };
                 asset = await _assetService.AddAsync(asset);
             }

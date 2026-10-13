@@ -72,7 +72,7 @@ namespace WealthTracker.Services
                 var purchase = new Purchase
                 {
                     PositionId = position.Id,
-                    Date = dto.Date,
+                    Date = dto.Date!.Value,
                     UnitPrice = dto.UnitPrice,
                     Quantity = dto.Quantity,
                     Taxes = dto.Taxes

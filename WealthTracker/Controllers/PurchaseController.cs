@@ -40,7 +40,7 @@ namespace WealthTracker.Controllers
             }
             catch (ArgumentException ex)
             {
-                return BadRequest(ex.Message);
+                return Problem(detail: ex.Message, statusCode: 400);
             }
         }
     }

@@ -36,16 +36,21 @@ namespace WealthTracker.Migrations
 
                     b.Property<string>("Sector")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Ticker")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Ticker")
+                        .IsUnique();
 
                     b.ToTable("Assets");
                 });
@@ -92,6 +97,9 @@ namespace WealthTracker.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AssetId");
+
+                    b.HasIndex("UserId", "AssetId")
+                        .IsUnique();
 
                     b.ToTable("Positions");
                 });

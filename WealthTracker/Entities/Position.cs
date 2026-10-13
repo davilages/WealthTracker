@@ -1,5 +1,8 @@
-﻿namespace WealthTracker.Entities
+using Microsoft.EntityFrameworkCore;
+
+namespace WealthTracker.Entities
 {
+    [Index(nameof(UserId), nameof(AssetId), IsUnique = true)]
     public class Position
     {
         public int Id { get; set; }
